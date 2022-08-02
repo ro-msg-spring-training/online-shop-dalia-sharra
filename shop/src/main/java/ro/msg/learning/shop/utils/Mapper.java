@@ -1,12 +1,8 @@
 package ro.msg.learning.shop.utils;
 
 import org.springframework.stereotype.Component;
-import ro.msg.learning.shop.dto.ProductCategoryDto;
-import ro.msg.learning.shop.dto.ProductDto;
-import ro.msg.learning.shop.dto.SupplierDto;
-import ro.msg.learning.shop.model.Product;
-import ro.msg.learning.shop.model.ProductCategory;
-import ro.msg.learning.shop.model.Supplier;
+import ro.msg.learning.shop.dto.*;
+import ro.msg.learning.shop.model.*;
 
 @Component
 public class Mapper {
@@ -67,5 +63,16 @@ public class Mapper {
                 .build();
         newProduct.setId(productDto.getId());
         return newProduct;
+    }
+
+    public Order dtoToOrder(OrderDto orderDto)
+    {
+        return Order.builder()
+                .createdAt(orderDto.getTimestamp())
+                .addressCountry(orderDto.getAddressCountry())
+                .addressCity(orderDto.getAddressCity())
+                .addressCounty(orderDto.getAddressCounty())
+                .addressStreetAddress(orderDto.getAddressStreetAddress())
+                .build();
     }
 }

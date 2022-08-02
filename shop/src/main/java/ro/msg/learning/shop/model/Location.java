@@ -1,10 +1,10 @@
 package ro.msg.learning.shop.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import java.util.Set;
 
@@ -12,23 +12,31 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = true, exclude = "stocks")
 public class Location extends BaseEntity<Integer>{
     private String name;
 
+    @Column(name = "ADDRESSCOUNTRY")
     private String addressCountry;
 
+    @Column(name = "ADDRESSCITY")
     private String addressCity;
 
+    @Column(name = "ADDRESSCOUNTY")
     private String addressCounty;
 
+    @Column(name = "ADDRESSSTREETADDRESS")
     private String addressStreetAddress;
 
-    @OneToMany(mappedBy = "shippedFrom")
+    @ToString.Exclude
+    @OneToMany(mappedBy = "shippedFrom", fetch = FetchType.LAZY)
     private Set<Order> orders;
 
-    @OneToMany(mappedBy = "location")
+    @ToString.Exclude
+    @OneToMany(mappedBy = "location", fetch = FetchType.LAZY)
     private Set<Revenue> revenues;
 
-    @OneToMany(mappedBy = "stockLocation")
+    @ToString.Exclude
+    @OneToMany(mappedBy = "stockLocation", fetch = FetchType.LAZY)
     private Set<Stock> stocks;
 }

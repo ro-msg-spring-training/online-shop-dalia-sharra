@@ -4,6 +4,6 @@ CREATE TABLE IF NOT EXISTS OrderDetail (
     productId int,
     quantity int,
     CONSTRAINT PK_OrderDetail PRIMARY KEY (orderId, productId),
-    FOREIGN KEY (orderId) REFERENCES "ORDER"(id),
+    FOREIGN KEY (orderId) REFERENCES ORDERT(id),
     FOREIGN KEY (productId) REFERENCES Product(id)
 );
