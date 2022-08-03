@@ -1,76 +1,57 @@
 package ro.msg.learning.shop.controller;
 
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ro.msg.learning.shop.dto.ProductDto;
-import org.springframework.beans.factory.annotation.Autowired;
-import ro.msg.learning.shop.exception.ProductException;
 import ro.msg.learning.shop.service.IProductService;
+import ro.msg.learning.shop.utils.mappers.ProductMapper;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
+@RequiredArgsConstructor
 public class ProductController {
-    @Autowired
-    private IProductService productService;
+    private final IProductService productService;
+    private final ProductMapper productMapper;
 
     @GetMapping("/products")
     @ResponseBody
     public List<ProductDto> getAllProducts()
     {
-        return productService.getAllProducts();
+        return this.productService.getAllProducts().
+                stream()
+                .map(productMapper::productToDto)
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/products/{id}")
-    public ResponseEntity<ProductDto> getProductById(@PathVariable Integer id)
+    public ResponseEntity<Object> getProductById(@PathVariable Integer id)
     {
-        try
-        {
-            ProductDto productDto = productService.getProductById(id);
-            return ResponseEntity.status(HttpStatus.OK).body(productDto);
-        }catch (ProductException e)
-        {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
+        ProductDto productDto = productMapper.productToDto(this.productService.getProductById(id));
+        return ResponseEntity.status(HttpStatus.OK).body(productDto);
     }
 
     @PostMapping("/products")
-    public ProductDto addProduct(@RequestBody ProductDto product, HttpServletResponse response)
+    public ResponseEntity<Object> addProduct(@RequestBody ProductDto productDto)
     {
-        try {
-            return productService.saveProduct(product);
-        }catch (ProductException e)
-        {
-            response.setStatus(HttpStatus.NO_CONTENT.value());
-            return null;
-        }
+        return ResponseEntity.status(HttpStatus.OK).body(this.productMapper.productToDto(this.productService.saveProduct(this.productMapper.dtoToProduct(productDto))));
     }
 
     @PutMapping("/products")
-    public ResponseEntity<String> updateProduct(@RequestBody ProductDto product)
+    public ResponseEntity<Object> updateProduct(@RequestBody ProductDto productDto)
     {
-        try
-        {
-            productService.updateProduct(product);
-            return ResponseEntity.status(HttpStatus.OK).body("Product updated successfully!");
-        }catch (ProductException e)
-        {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        }
+        this.productService.updateProduct(this.productMapper.dtoToProduct(productDto));
+        return ResponseEntity.status(HttpStatus.OK).body("Product updated successfully!");
     }
 
     @DeleteMapping("/products/{id}")
-    public ResponseEntity<String> deleteProduct(@PathVariable Integer id)
+    public ResponseEntity<Object> deleteProduct(@PathVariable Integer id)
     {
-        try{
-            productService.deleteProduct(id);
-            return ResponseEntity.status(HttpStatus.OK).body("Product deleted successfully!");
-        }catch(ProductException e)
-        {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        }
+        productService.deleteProduct(id);
+        return ResponseEntity.status(HttpStatus.OK).body("Product deleted successfully!");
     }
 }

@@ -1,6 +1,7 @@
 package ro.msg.learning.shop.model;
 
 import lombok.*;
+import ro.msg.learning.shop.model.composite.ids.StockId;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,13 +17,13 @@ public class Stock implements Serializable {
     private StockId stockId;
 
     @ManyToOne
-    @JoinColumn(name = "PRODUCTID")
+    @JoinColumn(name = "PRODUCT_ID")
     @MapsId("productId")
     @ToString.Exclude
     private Product stockProduct;
 
     @ManyToOne
-    @JoinColumn(name = "LOCATIONID")
+    @JoinColumn(name = "LOCATION_ID")
     @MapsId("locationId")
     @ToString.Exclude
     private Location stockLocation;

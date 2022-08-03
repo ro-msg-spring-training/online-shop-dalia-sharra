@@ -17,9 +17,11 @@ import java.time.LocalDate;
 @Table(name = "REVENUE")
 public class Revenue extends BaseEntity<Integer>{
     @ManyToOne
-    @JoinColumn(name = "LOCATIONID")
+    @JoinColumn(name = "LOCATION_ID")
     @ToString.Exclude
     private Location location;
+
     private LocalDate date;
+
     private BigDecimal sum;
 }

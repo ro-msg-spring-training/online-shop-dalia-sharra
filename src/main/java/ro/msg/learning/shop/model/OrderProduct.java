@@ -9,5 +9,6 @@ import lombok.*;
 @EqualsAndHashCode
 public class OrderProduct {
     private Integer productId;
+
     private Integer quantity;
 }

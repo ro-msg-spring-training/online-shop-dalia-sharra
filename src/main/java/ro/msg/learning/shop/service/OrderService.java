@@ -1,50 +1,44 @@
 package ro.msg.learning.shop.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ro.msg.learning.shop.exception.OrderException;
 import ro.msg.learning.shop.model.*;
-import ro.msg.learning.shop.repository.IOrderDetailRepository;
+import ro.msg.learning.shop.model.composite.ids.OrderDetailId;
 import ro.msg.learning.shop.repository.IOrderRepository;
-import ro.msg.learning.shop.repository.IProductRepository;
-import ro.msg.learning.shop.repository.IStockRepository;
 import ro.msg.learning.shop.strategy.StrategyConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class OrderService implements IOrderService{
 
-    @Autowired
-    IProductRepository productRepository;
+    private final IProductService productService;
 
-    @Autowired
-    IStockRepository stockRepository;
+    private final IStockService stockService;
 
-    @Autowired
-    IOrderRepository orderRepository;
+    private final IOrderRepository orderRepository;
 
-    @Autowired
-    IOrderDetailRepository orderDetailRepository;
+    private final IOrderDetailService orderDetailService;
 
-    @Autowired
-    StrategyConfiguration strategy;
+    private final StrategyConfiguration strategy;
 
     @Override
     public Order createOrder(Order order, List<OrderProduct> products) throws OrderException {
         List<OrderDetail> orderDetails = new ArrayList<>();
-        products.forEach(product -> orderDetails.add(new OrderDetail(new OrderDetailId(order.getId(), product.getProductId()), order, productRepository.findById(product.getProductId()).get(), product.getQuantity())));
+        products.forEach(product -> orderDetails.add(new OrderDetail(new OrderDetailId(order.getId(), product.getProductId()), order, productService.getProductById(product.getProductId()), product.getQuantity())));
         try {
             List<LocationProductQuantity> result = strategy.getStrategy().executeStrategy(orderDetails);
             result.forEach(object -> {
-                Stock stockProduct = stockRepository.findByStockProductAndStockLocation(object.getProduct(), object.getLocation());
-                stockProduct.setQuantity(stockProduct.getQuantity() - object.getQuantity());
+                Stock productStock = stockService.findByStockProductAndStockLocation(object.getProduct(), object.getLocation());
+                productStock.setQuantity(productStock.getQuantity() - object.getQuantity());
             });
             this.orderRepository.save(order);
             orderDetails.forEach(orderDetail -> {
                 orderDetail.getOrderDetailId().setOrderId(order.getId());
-                this.orderDetailRepository.save(orderDetail);
+                this.orderDetailService.saveOrderDetail(orderDetail);
             });
             return order;
 

@@ -7,14 +7,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class StrategyConfiguration {
     @Value("${strategy}")
-    private String strategy;
+    private StrategyType strategy;
 
     @Bean
     public Strategy getStrategy()
     {
-        if(strategy.equals("abundant"))
-            return new MostAbundantStrategy();
-        else
+        if(strategy == StrategyType.SINGLE_STRATEGY)
             return new SingleLocationStrategy();
+        else
+            return new MostAbundantStrategy();
     }
 }

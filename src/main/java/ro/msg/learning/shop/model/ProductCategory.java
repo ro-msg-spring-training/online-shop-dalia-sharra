@@ -14,7 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "PRODUCTCATEGORY")
+@Table(name = "PRODUCT_CATEGORY")
 public class ProductCategory extends BaseEntity<Integer> {
     private String name;
 

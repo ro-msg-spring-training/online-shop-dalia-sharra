@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @EqualsAndHashCode
 public class LocationProductQuantity {
-
     private Location location;
-    private Product product;
-    private Integer quantity;
 
+    private Product product;
+
+    private Integer quantity;
 }

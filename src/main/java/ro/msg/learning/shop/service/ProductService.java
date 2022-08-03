@@ -1,72 +1,57 @@
 package ro.msg.learning.shop.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ro.msg.learning.shop.dto.ProductDto;
 import ro.msg.learning.shop.exception.ProductException;
 import ro.msg.learning.shop.model.Product;
-import ro.msg.learning.shop.repository.IProductCategoryRepository;
 import ro.msg.learning.shop.repository.IProductRepository;
-import ro.msg.learning.shop.repository.ISupplierRepository;
-import ro.msg.learning.shop.utils.Mapper;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class ProductService implements IProductService{
-    @Autowired
-    private IProductRepository productRepository;
+    private final IProductRepository productRepository;
 
-    @Autowired
-    private IProductCategoryRepository productCategoryRepository;
+    private final IProductCategoryService productCategoryService;
 
-    @Autowired
-    private ISupplierRepository supplierRepository;
-
-    @Autowired
-    private Mapper mapper;
+    private final ISupplierService supplierService;
 
     @Override
-    public List<ProductDto> getAllProducts() {
-        return productRepository.findAll().
-                stream()
-                .map(mapper::productToDto)
-                .collect(Collectors.toList());
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
     }
 
     @Override
-    public ProductDto saveProduct(ProductDto productDto) throws ProductException {
-        if(!this.productCategoryRepository.existsById(productDto.getCategory().getId()))
+    public Product saveProduct(Product product) throws ProductException {
+        if(!this.productCategoryService.existsById(product.getCategory().getId()))
         {
             throw new ProductException("The given product category does not exist!");
         }
 
-        if(!this.supplierRepository.existsById(productDto.getSupplier().getId()))
+        if(!this.supplierService.existsById(product.getSupplier().getId()))
         {
             throw new ProductException("The given supplier does not exist!");
         }
-        Product product = mapper.dtoToProduct(productDto);
-        return mapper.productToDto(this.productRepository.save(product));
+        return this.productRepository.save(product);
     }
 
     @Override
-    public ProductDto updateProduct(ProductDto productDto) throws ProductException {
-        if(this.productRepository.existsById(productDto.getId()))
+    public void updateProduct(Product product) throws ProductException {
+        if(this.productRepository.existsById(product.getId()))
         {
-            this.productRepository.findById(productDto.getId())
+            this.productRepository.findById(product.getId())
                     .ifPresent(prod -> {
-                        prod.setName(productDto.getName());
-                        prod.setCategory(mapper.dtoToProductCategory(productDto.getCategory()));
-                        prod.setDescription(productDto.getDescription());
-                        prod.setImageUrl(productDto.getImageUrl());
-                        prod.setPrice(productDto.getPrice());
-                        prod.setWeight(productDto.getWeight());
-                        prod.setSupplier(mapper.dtoToSupplier(productDto.getSupplier()));
+                        prod.setName(product.getName());
+                        prod.setCategory(product.getCategory());
+                        prod.setDescription(product.getDescription());
+                        prod.setImageUrl(product.getImageUrl());
+                        prod.setPrice(product.getPrice());
+                        prod.setWeight(product.getWeight());
+                        prod.setSupplier(product.getSupplier());
                         this.productRepository.save(prod);
                     });
-            return productDto;
 
         }
         else
@@ -88,8 +73,8 @@ public class ProductService implements IProductService{
     }
 
     @Override
-    public ProductDto getProductById(Integer id) throws ProductException {
-        Optional<ProductDto> product = this.productRepository.findById(id).map(mapper::productToDto);
+    public Product getProductById(Integer id) throws ProductException {
+        Optional<Product> product = this.productRepository.findById(id);
         if(product.isPresent())
         {
             return product.get();

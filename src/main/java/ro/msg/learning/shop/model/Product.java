@@ -23,16 +23,16 @@ public class Product extends BaseEntity<Integer>{
     private Double weight;
 
     @ManyToOne
-    @JoinColumn(name = "CATEGORYID")
+    @JoinColumn(name = "CATEGORY_ID")
     @ToString.Exclude
     private ProductCategory category;
 
     @ManyToOne
     @ToString.Exclude
-    @JoinColumn(name = "SUPPLIERID")
+    @JoinColumn(name = "SUPPLIER_ID")
     private Supplier supplier;
 
-    @Column(name = "IMAGEURL")
+    @Column(name = "IMAGE_URL")
     private String imageUrl;
 
     @OneToMany(mappedBy = "stockProduct", fetch = FetchType.LAZY)

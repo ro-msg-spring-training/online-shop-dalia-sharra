@@ -16,16 +16,16 @@ import java.util.Set;
 public class Location extends BaseEntity<Integer>{
     private String name;
 
-    @Column(name = "ADDRESSCOUNTRY")
+    @Column(name = "ADDRESS_COUNTRY")
     private String addressCountry;
 
-    @Column(name = "ADDRESSCITY")
+    @Column(name = "ADDRESS_CITY")
     private String addressCity;
 
-    @Column(name = "ADDRESSCOUNTY")
+    @Column(name = "ADDRESS_COUNTY")
     private String addressCounty;
 
-    @Column(name = "ADDRESSSTREETADDRESS")
+    @Column(name = "ADDRESS_STREET_ADDRESS")
     private String addressStreetAddress;
 
     @ToString.Exclude

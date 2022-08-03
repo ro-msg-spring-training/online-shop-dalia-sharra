@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import ro.msg.learning.shop.model.Location;
 import ro.msg.learning.shop.model.Product;
 import ro.msg.learning.shop.model.Stock;
-import ro.msg.learning.shop.model.StockId;
+import ro.msg.learning.shop.model.composite.ids.StockId;
 
 @Repository
 public interface IStockRepository extends JpaRepository<Stock, StockId> {

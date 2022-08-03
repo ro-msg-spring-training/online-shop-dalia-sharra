@@ -1,27 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="76d26db8-96e5-4df7-92cc-57759231c6a5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/online-shop-dalia-sharra.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop/src/main/java/ro/msg/learning/shop/ShopApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop/src/test/java/ro/msg/learning/shop/ShopApplicationTests.java" afterDir="false" />
+    <list default="true" id="403ee252-b085-469e-af55-89c465157668" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/exception/RestResponseEntityExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/IOrderDetailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/IProductCategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/IStockService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/ISupplierService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/OrderDetailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/ProductCategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/StockService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/SupplierService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/strategy/StrategyType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/utils/mappers/OrderMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/utils/mappers/ProductCategoryMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/utils/mappers/ProductMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/utils/mappers/SupplierMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1_0__table_creation.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/2/127ce03ec0f5429f885be0e31b01e203e95c1a03" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/a/5a7dbdee5a927170abb07df61f0fcc5a1939fa7b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myFlywayConfig.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/exception/ProductException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/exception/ProductException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/LocationProductQuantity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/LocationProductQuantity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/OrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/OrderDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/OrderDetailId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/composite/ids/OrderDetailId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/OrderProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/OrderProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/ProductCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/ProductCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Revenue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Revenue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Stock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/StockId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/composite/ids/StockId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/repository/IOrderDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/repository/IOrderDetailRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/repository/IStockRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/repository/IStockRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/IProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/IProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/strategy/StrategyConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/strategy/StrategyConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/utils/Mapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_0__create_product_category_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_10__add_products.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_11__add_location.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_12__add_stocks.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_1__create_supplier_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_2__create_customer_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_3__create_location_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_4__create_revenue_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_5__create_product_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_6__create_stock_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_7__create_order_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_8__create_order_detail_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_9__add_objects.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1_1__populate_tables.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -29,35 +81,54 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2CWM9BB6wXRdEBIyzJxDg06heCK" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
   </component>
+  <component name="ProjectId" id="2Cpzouwr9h3dnvv0UUKJuRAP4o7" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/deiacd/IdeaProjects/online-shop-dalia-sharra/shop"
+    "last_opened_file_path": "C:/Users/deiacd/IdeaProjects/online-shop-dalia-sharra"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "h2"
+    ]
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="ShopApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="shop" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="ro.msg.learning.shop.ShopApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="76d26db8-96e5-4df7-92cc-57759231c6a5" name="Changes" comment="" />
-      <created>1658913735493</created>
+      <changelist id="403ee252-b085-469e-af55-89c465157668" name="Changes" comment="" />
+      <created>1659514493589</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1658913735493</updated>
-      <workItem from="1658913737862" duration="606000" />
-      <workItem from="1658914360983" duration="20000" />
+      <updated>1659514493589</updated>
+      <workItem from="1659514494780" duration="10468000" />
     </task>
     <servers />
   </component>
@@ -74,8 +145,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

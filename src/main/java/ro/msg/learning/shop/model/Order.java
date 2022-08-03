@@ -12,43 +12,35 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(callSuper = false)
-@Table(name = "ORDERT")
+@Table(name = "ORDERS")
 public class Order extends BaseEntity<Integer>{
 
     @ManyToOne
-    @JoinColumn(name = "SHIPPEDFROM")
+    @JoinColumn(name = "SHIPPED_FROM")
     @ToString.Exclude
     private Location shippedFrom;
 
     @ManyToOne
-    @JoinColumn(name = "CUSTOMERID")
+    @JoinColumn(name = "CUSTOMER_ID")
     @ToString.Exclude
     private Customer customer;
 
-    @Column(name = "CREATEDAT")
+    @Column(name = "CREATED_AT")
     private LocalDateTime createdAt;
 
-    @Column(name = "ADDRESSCOUNTRY")
+    @Column(name = "ADDRESS_COUNTRY")
     private String addressCountry;
 
-    @Column(name = "ADDRESSCITY")
+    @Column(name = "ADDRESS_CITY")
     private String addressCity;
 
-    @Column(name = "ADDRESSCOUNTY")
+    @Column(name = "ADDRESS_COUNTY")
     private String addressCounty;
 
-    @Column(name = "ADDRESSSTREETADDRESS")
+    @Column(name = "ADDRESS_STREET_ADDRESS")
     private String addressStreetAddress;
 
     @ToString.Exclude
     @OneToMany(mappedBy = "orderDetailOrder", fetch = FetchType.LAZY)
     private Set<OrderDetail> orderDetails;
-
-    public Order(LocalDateTime createdAt, String addressCountry, String addressCity, String addressCounty, String addressStreetAddress) {
-        this.createdAt = createdAt;
-        this.addressCountry = addressCountry;
-        this.addressCity = addressCity;
-        this.addressCounty = addressCounty;
-        this.addressStreetAddress = addressStreetAddress;
-    }
 }
