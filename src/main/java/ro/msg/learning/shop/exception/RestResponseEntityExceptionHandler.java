@@ -18,7 +18,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     }
 
     @ExceptionHandler(value = { OrderException.class})
-    protected ResponseEntity<Object> handleProductException(
+    protected ResponseEntity<Object> handleOrderException(
             OrderException ex, WebRequest request) {
         return handleExceptionInternal(ex, ex.getMessage(),
                 new HttpHeaders(), HttpStatus.CONFLICT, request);
