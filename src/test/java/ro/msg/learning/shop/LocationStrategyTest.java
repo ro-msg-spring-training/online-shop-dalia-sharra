@@ -2,24 +2,42 @@ package ro.msg.learning.shop;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
+import ro.msg.learning.shop.exception.OrderException;
 import ro.msg.learning.shop.model.*;
 import ro.msg.learning.shop.strategy.MostAbundantStrategy;
+import ro.msg.learning.shop.strategy.SingleLocationStrategy;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@ExtendWith(MockitoExtension.class)
 class LocationStrategyTest {
 
-    private List<OrderDetail> orderDetails = new ArrayList<>();
+    private final List<OrderDetail> orderDetails = new ArrayList<>();
 
-    @Autowired
+    @InjectMocks
     private MostAbundantStrategy mostAbundantStrategy;
+
+    @InjectMocks
+    private SingleLocationStrategy singleLocationStrategy;
+
+    private Location location1, location2, location3;
+
+    private Order order;
+
+    private Product product1, product2, product3;
 
     @BeforeEach
     void setUp()
@@ -28,7 +46,7 @@ class LocationStrategyTest {
 
         Supplier supplier1 = Supplier.builder().name("Supplier1").build();
 
-        Product product1 = Product.builder().name("Product1")
+        product1 = Product.builder().name("Product1")
                 .description("Description1")
                 .price(new BigDecimal("120.3"))
                 .weight(10d)
@@ -36,7 +54,7 @@ class LocationStrategyTest {
                 .supplier(supplier1)
                 .imageUrl("ImageUrl1")
                 .build();
-        Product product2 = Product.builder().name("Product2")
+        product2 = Product.builder().name("Product2")
                 .description("Description2")
                 .price(new BigDecimal("512.9"))
                 .weight(3d)
@@ -44,7 +62,7 @@ class LocationStrategyTest {
                 .supplier(supplier1)
                 .imageUrl("ImageUrl2")
                 .build();
-        Product product3 = Product.builder().name("Product3")
+        product3 = Product.builder().name("Product3")
                 .description("Description3")
                 .price(new BigDecimal(100))
                 .weight(5d)
@@ -53,21 +71,21 @@ class LocationStrategyTest {
                 .imageUrl("ImageUrl3")
                 .build();
 
-        Location location1 = Location.builder()
+        location1 = Location.builder()
                 .name("Location1")
                 .addressCountry("Romania")
                 .addressCity("Cluj-Napoca")
                 .addressCounty("Cluj")
                 .addressStreetAddress("Street Croitorilor 12")
                 .build();
-        Location location2 = Location.builder()
+        location2 = Location.builder()
                 .name("Location2")
                 .addressCountry("Spain")
                 .addressCity("Barcelona")
                 .addressCounty("Barcelona")
                 .addressStreetAddress("Street Hola 12")
                 .build();
-        Location location3 = Location.builder()
+        location3 = Location.builder()
                 .name("Location3")
                 .addressCountry("Romania")
                 .addressCity("Brasov")
@@ -75,11 +93,14 @@ class LocationStrategyTest {
                 .addressStreetAddress("Strada Fagului 2")
                 .build();
 
+        Set<Stock> stockSet1 = new HashSet<>();
+
         Stock stock1 = Stock.builder()
                 .stockProduct(product1)
                 .stockLocation(location1)
                 .quantity(10)
                 .build();
+
         Stock stock2 = Stock.builder()
                 .stockProduct(product1)
                 .stockLocation(location2)
@@ -90,6 +111,15 @@ class LocationStrategyTest {
                 .stockLocation(location3)
                 .quantity(21)
                 .build();
+
+        stockSet1.add(stock1);
+        stockSet1.add(stock2);
+        stockSet1.add(stock3);
+
+        product1.setStocks(stockSet1);
+
+        Set<Stock> stockSet2 = new HashSet<>();
+
         Stock stock4 = Stock.builder()
                 .stockProduct(product2)
                 .stockLocation(location1)
@@ -105,6 +135,15 @@ class LocationStrategyTest {
                 .stockLocation(location3)
                 .quantity(7)
                 .build();
+
+        stockSet2.add(stock4);
+        stockSet2.add(stock5);
+        stockSet2.add(stock6);
+
+        product2.setStocks(stockSet2);
+
+        Set<Stock> stockSet3 = new HashSet<>();
+
         Stock stock7 = Stock.builder()
                 .stockProduct(product3)
                 .stockLocation(location1)
@@ -121,7 +160,13 @@ class LocationStrategyTest {
                 .quantity(4)
                 .build();
 
-        Order order = Order.builder()
+        stockSet3.add(stock7);
+        stockSet3.add(stock8);
+        stockSet3.add(stock9);
+
+        product3.setStocks(stockSet3);
+
+        order = Order.builder()
                 .createdAt(LocalDateTime.of(2015,
                         Month.JULY, 29, 19, 30, 40))
                 .addressCountry("Romania")
@@ -129,7 +174,41 @@ class LocationStrategyTest {
                 .addressCity("Cluj-Napoca")
                 .addressStreetAddress("Strada Parang 26")
                 .build();
+    }
 
+    @Test
+    void mostAbundantLocationStrategySuccess()
+    {
+        OrderDetail orderDetail1 = OrderDetail.builder()
+                .orderDetailOrder(order)
+                .orderDetailProduct(product1)
+                .quantity(3)
+                .build();
+        OrderDetail orderDetail2 = OrderDetail.builder()
+                .orderDetailOrder(order)
+                .orderDetailProduct(product2)
+                .quantity(5)
+                .build();
+        OrderDetail orderDetail3 = OrderDetail.builder()
+                .orderDetailOrder(order)
+                .orderDetailProduct(product3)
+                .quantity(6)
+                .build();
+
+        this.orderDetails.add(orderDetail1);
+        this.orderDetails.add(orderDetail2);
+        this.orderDetails.add(orderDetail3);
+
+        List<LocationProductQuantity> result = mostAbundantStrategy.executeStrategy(this.orderDetails);
+        assertThat(result).isNotNull();
+        assertEquals(result.get(0).getLocation(), location3);
+        assertEquals(result.get(1).getLocation(), location3);
+        assertEquals(result.get(2).getLocation(), location2);
+    }
+
+    @Test
+    void mostAbundantLocationStrategyFailure()
+    {
         OrderDetail orderDetail1 = OrderDetail.builder()
                 .orderDetailOrder(order)
                 .orderDetailProduct(product1)
@@ -149,14 +228,66 @@ class LocationStrategyTest {
         this.orderDetails.add(orderDetail1);
         this.orderDetails.add(orderDetail2);
         this.orderDetails.add(orderDetail3);
+        OrderException orderException = assertThrows(OrderException.class,
+                () -> mostAbundantStrategy.executeStrategy(this.orderDetails));
+
+        assertEquals("Not enough stock!", orderException.getMessage());
     }
 
     @Test
-    void mostAbundantLocationStrategy()
+    void singleLocationStrategySuccess()
     {
-        List<LocationProductQuantity> result = mostAbundantStrategy.executeStrategy(this.orderDetails);
-//        assertEquals(result.get(0).getLocation(), location3);
-//        assertEquals(result.get(1).getLocation(), location);
-//        assertEquals(result.get(2).getLocation(), location3);
+        OrderDetail orderDetail1 = OrderDetail.builder()
+                .orderDetailOrder(order)
+                .orderDetailProduct(product1)
+                .quantity(15)
+                .build();
+        OrderDetail orderDetail2 = OrderDetail.builder()
+                .orderDetailOrder(order)
+                .orderDetailProduct(product2)
+                .quantity(3)
+                .build();
+        OrderDetail orderDetail3 = OrderDetail.builder()
+                .orderDetailOrder(order)
+                .orderDetailProduct(product3)
+                .quantity(2)
+                .build();
+
+        this.orderDetails.add(orderDetail1);
+        this.orderDetails.add(orderDetail2);
+        this.orderDetails.add(orderDetail3);
+
+        List<LocationProductQuantity> result = singleLocationStrategy.executeStrategy(this.orderDetails);
+        assertThat(result).isNotNull();
+        assertEquals(result.get(0).getLocation(), location3);
+    }
+
+    @Test
+    void singleLocationStrategyFailure()
+    {
+        OrderDetail orderDetail1 = OrderDetail.builder()
+                .orderDetailOrder(order)
+                .orderDetailProduct(product1)
+                .quantity(15)
+                .build();
+        OrderDetail orderDetail2 = OrderDetail.builder()
+                .orderDetailOrder(order)
+                .orderDetailProduct(product2)
+                .quantity(3)
+                .build();
+        OrderDetail orderDetail3 = OrderDetail.builder()
+                .orderDetailOrder(order)
+                .orderDetailProduct(product3)
+                .quantity(6)
+                .build();
+
+        this.orderDetails.add(orderDetail1);
+        this.orderDetails.add(orderDetail2);
+        this.orderDetails.add(orderDetail3);
+
+        OrderException orderException = assertThrows(OrderException.class,
+                () -> singleLocationStrategy.executeStrategy(this.orderDetails));
+
+        assertEquals("No location have enough stocks!", orderException.getMessage());
     }
 }

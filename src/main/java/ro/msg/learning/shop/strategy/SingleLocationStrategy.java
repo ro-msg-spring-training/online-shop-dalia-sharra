@@ -17,8 +17,23 @@ public class SingleLocationStrategy implements Strategy{
     @Override
     public List<LocationProductQuantity> executeStrategy(List<OrderDetail> products) throws OrderException {
         Set<Location> validLocations = new HashSet<>();
+        Set<Location> productGoodLocations = new HashSet<>();
         List<LocationProductQuantity> result = new ArrayList<>();
-        products.forEach(orderDetail -> validLocations.addAll(orderDetail.getOrderDetailProduct().getStocks().stream().filter(stock -> stock.getQuantity() >= orderDetail.getQuantity()).map(Stock::getStockLocation).collect(Collectors.toSet())));
+        products.forEach(orderDetail ->
+        {
+            productGoodLocations.clear();
+            productGoodLocations.addAll(orderDetail.getOrderDetailProduct().getStocks().stream().filter(stock -> stock.getQuantity() >= orderDetail.getQuantity()).map(Stock::getStockLocation).collect(Collectors.toSet()));
+            if(validLocations.isEmpty()) {
+                validLocations.addAll(productGoodLocations);
+            }
+            else {
+                Set<Location> intersectSet = productGoodLocations.stream()
+                        .filter(validLocations::contains)
+                        .collect(Collectors.toSet());
+                validLocations.clear();
+                validLocations.addAll(intersectSet);
+            }
+        });
 
         if(!validLocations.isEmpty()) {
             Location bestLocation = validLocations.iterator().next();
