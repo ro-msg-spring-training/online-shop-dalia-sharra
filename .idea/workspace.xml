@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="403ee252-b085-469e-af55-89c465157668" name="Changes" comment="Applied all suggestions">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ro/msg/learning/shop/LocationStrategyTest.java" afterDir="false" />
+    <list default="true" id="403ee252-b085-469e-af55-89c465157668" name="Changes" comment="Final suggestions made">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Stock.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +94,7 @@
       <option name="presentableId" value="Default" />
       <updated>1659514493589</updated>
       <workItem from="1659514494780" duration="18667000" />
-      <workItem from="1659592945321" duration="931000" />
+      <workItem from="1659592945321" duration="1275000" />
     </task>
     <task id="LOCAL-00001" summary="Applied all suggestions">
       <created>1659527826059</created>
@@ -109,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659527826059</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Final suggestions made">
+      <created>1659594008203</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1659594008203</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,6 +129,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Applied all suggestions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Applied all suggestions" />
+    <MESSAGE value="Final suggestions made" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final suggestions made" />
   </component>
 </project>
