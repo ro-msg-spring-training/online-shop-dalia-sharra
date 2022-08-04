@@ -23,6 +23,8 @@ public class SingleLocationStrategy implements Strategy{
         {
             productGoodLocations.clear();
             productGoodLocations.addAll(orderDetail.getOrderDetailProduct().getStocks().stream().filter(stock -> stock.getQuantity() >= orderDetail.getQuantity()).map(Stock::getStockLocation).collect(Collectors.toSet()));
+            if(productGoodLocations.isEmpty())
+                throw new OrderException("No location have enough stocks!");
             if(validLocations.isEmpty()) {
                 validLocations.addAll(productGoodLocations);
             }
@@ -33,6 +35,7 @@ public class SingleLocationStrategy implements Strategy{
                 validLocations.clear();
                 validLocations.addAll(intersectSet);
             }
+
         });
 
         if(!validLocations.isEmpty()) {
