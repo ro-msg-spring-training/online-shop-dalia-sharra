@@ -4,62 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="403ee252-b085-469e-af55-89c465157668" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/exception/RestResponseEntityExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/IOrderDetailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/IProductCategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/IStockService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/ISupplierService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/OrderDetailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/ProductCategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/StockService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/SupplierService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/strategy/StrategyType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/utils/mappers/OrderMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/utils/mappers/ProductCategoryMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/utils/mappers/ProductMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/utils/mappers/SupplierMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1_0__table_creation.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/2/127ce03ec0f5429f885be0e31b01e203e95c1a03" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/a/5a7dbdee5a927170abb07df61f0fcc5a1939fa7b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d" beforeDir="false" />
+    <list default="true" id="403ee252-b085-469e-af55-89c465157668" name="Changes" comment="Applied all suggestions">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ro/msg/learning/shop/LocationStrategyTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myFlywayConfig.conf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/controller/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/exception/ProductException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/exception/ProductException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/LocationProductQuantity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/LocationProductQuantity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/OrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/OrderDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/OrderDetailId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/composite/ids/OrderDetailId.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/OrderProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/OrderProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/ProductCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/ProductCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Revenue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Revenue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/Stock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/StockId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/model/composite/ids/StockId.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/repository/IOrderDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/repository/IOrderDetailRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/repository/IStockRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/repository/IStockRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/IProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/IProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/strategy/StrategyConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/strategy/StrategyConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/msg/learning/shop/utils/Mapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_0__create_product_category_table.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_10__add_products.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_11__add_location.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_12__add_stocks.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_1__create_supplier_table.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_2__create_customer_table.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_3__create_location_table.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_4__create_revenue_table.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_5__create_product_table.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_6__create_stock_table.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_7__create_order_table.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_8__create_order_detail_table.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_9__add_objects.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1_1__populate_tables.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,11 +24,17 @@
       <list>
         <option value="Interface" />
         <option value="Enum" />
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="newBranch" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -102,8 +61,12 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/deiacd/IdeaProjects/online-shop-dalia-sharra"
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "C:/Users/deiacd/IdeaProjects/online-shop-dalia-sharra",
+    "spring.configuration.checksum": "fb54f3c5992b96d001bb16e8e92d968d"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -111,6 +74,14 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="ro.msg.learning.shop" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="ShopApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="shop" />
@@ -128,8 +99,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1659514493589</updated>
-      <workItem from="1659514494780" duration="10468000" />
+      <workItem from="1659514494780" duration="18667000" />
+      <workItem from="1659592945321" duration="931000" />
     </task>
+    <task id="LOCAL-00001" summary="Applied all suggestions">
+      <created>1659527826059</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1659527826059</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,5 +125,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Applied all suggestions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Applied all suggestions" />
   </component>
 </project>

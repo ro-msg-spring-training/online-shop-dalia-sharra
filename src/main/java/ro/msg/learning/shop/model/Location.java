@@ -13,6 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true, exclude = "stocks")
+@Builder
 public class Location extends BaseEntity<Integer>{
     private String name;
 

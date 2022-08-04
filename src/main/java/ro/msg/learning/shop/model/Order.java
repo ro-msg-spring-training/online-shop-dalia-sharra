@@ -43,4 +43,6 @@ public class Order extends BaseEntity<Integer>{
     @ToString.Exclude
     @OneToMany(mappedBy = "orderDetailOrder", fetch = FetchType.LAZY)
     private Set<OrderDetail> orderDetails;
+
+
 }

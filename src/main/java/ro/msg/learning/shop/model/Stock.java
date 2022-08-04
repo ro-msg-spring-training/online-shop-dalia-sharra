@@ -12,6 +12,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @EqualsAndHashCode(exclude = "stockProduct")
 @Table(name = "STOCK")
+@Builder
 public class Stock implements Serializable {
     @EmbeddedId
     private StockId stockId;

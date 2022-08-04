@@ -14,11 +14,12 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/products")
 public class ProductController {
     private final IProductService productService;
     private final ProductMapper productMapper;
 
-    @GetMapping("/products")
+    @GetMapping
     @ResponseBody
     public List<ProductDto> getAllProducts()
     {
@@ -28,27 +29,27 @@ public class ProductController {
                 .collect(Collectors.toList());
     }
 
-    @GetMapping("/products/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Object> getProductById(@PathVariable Integer id)
     {
         ProductDto productDto = productMapper.productToDto(this.productService.getProductById(id));
         return ResponseEntity.status(HttpStatus.OK).body(productDto);
     }
 
-    @PostMapping("/products")
+    @PostMapping
     public ResponseEntity<Object> addProduct(@RequestBody ProductDto productDto)
     {
         return ResponseEntity.status(HttpStatus.OK).body(this.productMapper.productToDto(this.productService.saveProduct(this.productMapper.dtoToProduct(productDto))));
     }
 
-    @PutMapping("/products")
+    @PutMapping
     public ResponseEntity<Object> updateProduct(@RequestBody ProductDto productDto)
     {
         this.productService.updateProduct(this.productMapper.dtoToProduct(productDto));
         return ResponseEntity.status(HttpStatus.OK).body("Product updated successfully!");
     }
 
-    @DeleteMapping("/products/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteProduct(@PathVariable Integer id)
     {
         productService.deleteProduct(id);
